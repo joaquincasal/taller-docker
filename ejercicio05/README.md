@@ -1,0 +1,5 @@
+# Ejercicio 5: Explorando Dockerfile commands
+
+- healthcheck: permite pasar un comando que verifica si el contenedor está corriendo. El comando a utilizar dependerá de cada imagen. Por ejemplo, podríamos tener un servidor web cuyo proceso aún está corriendo (entonces el contenedor también) pero no puede aceptar nuevas conexiones por algún motivo, en ese caso el comando podría indicar que el contenedor en realidad no está funcionando.
+- onbuild: agrega a la imagen instrucciones que serán ejecutadas solo cuando la imagen se use como base de otra imagen. Las instrucciones se agregan justo después del FROM en la imagen nueva.
+- volume: crea un punto de montaje indicado por el parámetro que acompaña al comando. Luego al correr un container con la imagen se mapea a un directorio del host y se crea un volumen.
