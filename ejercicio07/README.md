@@ -10,4 +10,4 @@ Q: ¿Puedes leer el docker-compose.yml y describir lo que hace cada una de sus l
 A: El container db define la imagen base a utilizar (versión alpine de postgres) y define una variable de ambiente para la contraseña de la base de datos. El container web define la imagen base a utilizar, mapea los puertos 3000 del host y del container, setea variables de ambiente y permite comunicar al container con el container db mediante 'link'. También utiliza depends_on para indicar que el contenedor de la base de datos debe levantar primero que el web.
 
 Q: Dado que cada contenedor corre en forma aislada ¿Cómo es posible que esos contenedores se vean entre sí?  
-A: Pueden comunicarse porque se está utilizando link.
+A: Pueden comunicarse porque al no especificar networks, se crea una por default y ambos contenedores se unen, pudiendo así comunicarse entre ellos.
