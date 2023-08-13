@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    image: nicopaez/jobvacancy-ruby:1.3.0
+    environment:
+      PORT: "3000"
+      RACK_ENV: "production"
+      DATABASE_URL: "postgres://postgres:Passw0rd!@db:5432/postgres"
+    depends_on:
+      - db
+    networks:
+      - internal
+      - external
+  db:
+    image: postgres:14.4-alpine
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    networks:
+      - internal
+    secrets:
+      - db_password
+secrets:
+  db_password:
+    file: db_password.txt
+networks:
+  internal:
+    driver: bridge
+    internal: true
+  external:
+    driver: host
